@@ -4,6 +4,7 @@ const app = express()
 const port = 5005
 const mongoose = require('mongoose');
 require('dotenv').config();
+const MONGO = process.env.MONGO;
 
 const calculatorRoutes = require('./routes/calculator'); // Импорт роутов
 const userRoutes = require('./routes/user'); // Импорт роутов
@@ -13,7 +14,7 @@ const cartRoutes = require('./routes/cart'); // Импорт роутов
 const paymentRoutes = require('./routes/payment'); // Импорт роутов
 const orderRoutes = require('./routes/order'); // Импорт роутов
 
-mongoose.connect('mongodb+srv://margoshkari:W0R46UwINogEZFsq@as-balance.j0mom.mongodb.net/as_balance?retryWrites=true&w=majority&appName=as-balance')
+mongoose.connect(MONGO)
 .then(() => console.log('MongoDB подключен'))
 .catch(err => console.log('Ошибка подключения к MongoDB:', err));
 
