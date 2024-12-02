@@ -1,0 +1,17 @@
+const mongoose = require('mongoose');
+
+const subscriptionSchema = new mongoose.Schema({
+    orderId: { type: String, required: true, unique: true },
+    subscriptionCalc: {
+        type: { type: Number, required: true }, // Добавлено required, если нужно
+        startDate: { type: Number, default: null },
+        endDate: { type: Number, default: null },
+    },
+    isApproved: { type: Boolean, default: false },
+    date: { type: Date, default: Date.now },
+});
+
+
+const Subscription = mongoose.model('Subscription', subscriptionSchema);
+
+module.exports = Subscription;
